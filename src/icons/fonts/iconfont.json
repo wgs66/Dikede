@@ -1,0 +1,16 @@
+{
+  "id": "3558655",
+  "name": "帝可得",
+  "font_family": "ded",
+  "css_prefix_text": "dkd-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10392612",
+      "name": "盾牌",
+      "font_class": "dunpai",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    }
+  ]
+}
