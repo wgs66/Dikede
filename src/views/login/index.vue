@@ -120,7 +120,22 @@ export default {
         await this.$refs.loginForm.validate();
         console.log("校验成功！");
         // console.log(this.formLabelAlign);
-        this.$store.dispatch("user/getToken", this.formLabelAlign);
+        this.$store.dispatch("user/getToken", this.formLabelAlign).then(() => {
+          if (!this.$store.state.user.loginInfo.success) {
+            this.$message({
+              showClose: true,
+              message: this.$store.state.user.loginInfo.msg,
+              type: "error",
+            });
+          } else {
+            this.$message({
+              showClose: true,
+              message: this.$store.state.user.loginInfo.msg,
+              type: "success",
+            });
+            this.$router.push({ path: "/" });
+          }
+        });
       } catch (error) {
         console.log("校验失败!");
       }
