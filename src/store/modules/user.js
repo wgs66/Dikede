@@ -14,10 +14,10 @@ export default {
   },
   actions: {
     async getToken(context, payload) {
-      const { data } = await login(payload);
+      const res = await login(payload);
       // console.log(data);
-
-      context.commit("setToken", data);
+      // console.log(res);
+      context.commit("setToken", res);
     },
   },
 };

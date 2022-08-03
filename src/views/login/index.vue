@@ -120,26 +120,32 @@ export default {
         await this.$refs.loginForm.validate();
         console.log("校验成功！");
         // console.log(this.formLabelAlign);
-        this.$store.dispatch("user/getToken", this.formLabelAlign).then(() => {
-          if (!this.$store.state.user.loginInfo.success) {
-            this.$message({
-              showClose: true,
-              message: this.$store.state.user.loginInfo.msg,
-              type: "error",
-            });
-          } else {
-            this.$message({
-              showClose: true,
-              message: this.$store.state.user.loginInfo.msg,
-              type: "success",
-            });
-            this.$router.push({ path: "/" });
-          }
-        });
+        await this.$store.dispatch("user/getToken", this.formLabelAlign);
+        this.$message.success("登录成功！");
+
+        this.$router.push({ path: "/" });
       } catch (error) {
         console.log("校验失败!");
       }
     },
+
+    // .then(() => {
+    //       if (!this.$store.state.user.loginInfo.success) {
+    //         this.$message({
+    //           showClose: true,
+    //           message: this.$store.state.user.loginInfo.msg,
+    //           type: "error",
+    //         });
+    //       } else {
+    //         this.$message({
+    //           showClose: true,
+    //           message: this.$store.state.user.loginInfo.msg,
+    //           type: "success",
+    //         });
+    //         this.$router.push({ path: "/" });
+    //       }
+    //     });
+
     // 显示密码
     isShowEye() {
       this.inputType = !this.inputType;
@@ -147,15 +153,16 @@ export default {
     // 获取验证码
     async getLoginPic() {
       this.formLabelAlign.clientToken = Math.floor(Math.random() * 10001);
-      // console.log(this.formLabelAlign.clientToken);
+      console.log(this.formLabelAlign.clientToken);
       try {
         const res = await imageCode(this.formLabelAlign.clientToken);
-        const captchaImg = window.URL.createObjectURL(res.data);
+        // console.log(res);
+        const captchaImg = window.URL.createObjectURL(res);
         this.imgs = captchaImg;
         // console.log(this.imgs);
         // console.log(res);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.msg);
       }
     },
   },
