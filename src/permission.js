@@ -10,6 +10,11 @@ router.beforeEach((to, from, next) => {
   if (token) {
     // 1.登录
     // 是否进入登录页
+
+    if (!store.state.user.userInfo.userId) {
+      store.dispatch("user/getUserInfo", store.state.user.loginInfo.userId);
+    }
+
     if (to.path === "/login") {
       //   1.1 是 跳转到首页
       next("/");

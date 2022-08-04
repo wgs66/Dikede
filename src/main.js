@@ -12,6 +12,8 @@ import App from "./App";
 import store from "./store";
 import router from "./router";
 
+import * as directives from "@/directives";
+
 import "@/icons/fonts/iconfont.css";
 
 import "@/icons"; // icon
@@ -36,6 +38,10 @@ Vue.use(ElementUI, { locale });
 // Vue.use(ElementUI)
 
 Vue.config.productionTip = false;
+
+for (let key in directives) {
+  Vue.directive(key, directives[key]);
+}
 
 new Vue({
   el: "#app",

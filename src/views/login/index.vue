@@ -69,6 +69,7 @@
             type="primary"
             :plain="true"
             class="login-btn"
+            :loading="isLoading"
             @click="onSubmit"
             >登录</el-button
           >
@@ -90,6 +91,7 @@ export default {
         clientToken: "",
         loginType: 0,
       },
+      isLoading: false,
       inputType: false,
       imgs: "",
       rules: {
@@ -108,14 +110,14 @@ export default {
       },
     };
   },
-
   created() {
     this.getLoginPic();
   },
-
   methods: {
     // 登录
     async onSubmit() {
+      this.isLoading = true;
+
       try {
         await this.$refs.loginForm.validate();
         console.log("校验成功！");
@@ -126,6 +128,8 @@ export default {
         this.$router.push({ path: "/" });
       } catch (error) {
         console.log("校验失败!");
+      } finally {
+        this.isLoading = false;
       }
     },
 

@@ -52,7 +52,7 @@ export default {
 .sidebar-logo-container {
   position: relative;
   width: 100%;
-  height: 50px;
+  height: 60px;
   line-height: 50px;
   background: #5373e0;
   text-align: center;
@@ -66,7 +66,8 @@ export default {
       width: 50%;
       height: 60%;
       vertical-align: middle;
-      margin-right: 12px;
+      margin-right: 60px;
+      margin-top: 10px;
     }
 
     & .sidebar-title {

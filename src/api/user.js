@@ -25,3 +25,10 @@ export function login(data) {
     data,
   });
 }
+
+export function getUserInfoApi(id) {
+  return request({
+    url: "/api/user-service/user/" + id,
+    method: "GET",
+  });
+}
