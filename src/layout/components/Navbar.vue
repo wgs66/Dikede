@@ -85,6 +85,11 @@ export default {
 }
 .navbar {
   height: 60px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  width: 100%;
   overflow: hidden;
   background-image: url("../../assets/layout_images/title-bg.png");
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);

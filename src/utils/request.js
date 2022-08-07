@@ -11,13 +11,13 @@ function isTimeOut() {
   const currentTime = Date.now();
   const tokenTime = getTokenTime();
   const timeout = 2 * 60 * 60 * 1000;
-  console.log(currentTime, tokenTime, timeout);
+  // console.log(currentTime, tokenTime, timeout);
   return currentTime - tokenTime > timeout;
 }
 
 service.interceptors.request.use(async (config) => {
   const token = store.state.user;
-  console.log(token.token);
+  // console.log(token.token);
   if (store.state.user.token) {
     // console.log(111);
     if (isTimeOut()) {
@@ -42,6 +42,9 @@ service.interceptors.response.use(
       return data;
     }
     if (data.status) {
+      return data;
+    }
+    if (res.request.status === 200) {
       return data;
     }
     Message.error(data.msg);

@@ -26,7 +26,7 @@ export default {
       setTokenTime();
     },
     async getUserInfo(context, payload) {
-      console.log(payload);
+      // console.log(payload);
       const userBaseInfo = await getUserInfoApi(payload);
       // console.log(userBaseInfo);
       context.commit("setUserInfo", userBaseInfo);

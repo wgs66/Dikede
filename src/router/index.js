@@ -1,13 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import approvals from "./modules/approvals"; //工单
-import departments from "./modules/departments"; //点位
-import employees from "./modules/employees"; //设备
-import permission from "./modules/permission"; //人员
-import attendances from "./modules/attendances"; //商品
-import salarys from "./modules/salarys"; //策略
-import setting from "./modules/setting"; //订单
-import social from "./modules/social"; //对账
+import strategy from "./modules/strategy.js"; //策略管理
+import order from "./modules/order"; //订单管理
+import reconciliation from "./modules/reconciliation"; //对账管理
+import workOrder from "./modules/workOrder"; //工单管理
+import pointPosition from "./modules/pointPosition"; //点位管理
+import equipment from "./modules/equipment"; // 设备管理
+import personnel from "./modules/personnel"; //人员管理
+import commodity from "./modules/commodity"; //商品管理
 
 Vue.use(Router);
 
@@ -46,14 +46,14 @@ export const constantRoutes = [
 ];
 
 const asyncRoutes = [
-  approvals,
-  departments,
-  employees,
-  permission,
-  attendances,
-  salarys,
-  setting,
-  social,
+  workOrder, //工单管理
+  pointPosition, //点位管理
+  equipment, // 设备管理
+  personnel, //人员管理
+  commodity, //商品管理
+  strategy, //策略管理
+  order, //订单管理
+  reconciliation, //对账管理
 ];
 
 const createRouter = () =>

@@ -26,6 +26,12 @@ export function login(data) {
   });
 }
 
+/**
+ * 获取用户信息
+ * @param {String} id
+ * @returns Promise
+ */
+
 export function getUserInfoApi(id) {
   return request({
     url: "/api/user-service/user/" + id,
